@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>Senhas</title>
+    <style>
+      * {
+        font-family: sans-serif;
+      }
+
+      .container {
+        text-align: center;
+        font-size: 78px;
+      }
+
+      #senha {
+        font-size: 146px;
+        font-weight: bold;
+      }
+    </style>
+    <link rel="sourcemap" href="/socket.io-client/dist/socket.io.js.map">
+  </head>
+  <body>
+    <audio id="bell" src="./bell.wav" preload="auto">
+      <p>Este navegador não suporta a tag audio</p>
+    </audio>
+    <div class="container">
+      <p>Senha:</p>
+      <p id="senha"><%= counter %></p>
+    </div>
+    <script src="/socket.io-client/dist/socket.io.js"></script>
+    <script src="./counter.js"></script>
+  </body>
+</html>

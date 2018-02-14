@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>MESA</title>
+    <style>
+      * {
+        font-family: sans-serif;
+      }
+
+      body {
+        text-align: center;
+      }
+    </style>
+    <link rel="sourcemap" href="/socket.io-client/dist/socket.io.js.map">
+  </head>
+  <body>
+    <h1>Senha atual: <span id="senha"><%= counter %></span></h1>
+    <button type="button" id="call">Chamar próxima senha</button>
+    <button type="button" id="reset">Reiniciar contagem</button>
+
+    <script src="/socket.io-client/dist/socket.io.js"></script>
+    <script src="./mesa.js"></script>
+  </body>
+</html>
