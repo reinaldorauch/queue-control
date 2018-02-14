@@ -1,0 +1,33 @@
+{
+  "name": "queue-control",
+  "version": "1.0.0",
+  "description": "Websystem to control queues",
+  "main": "index.js",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "mysql": "^2.15.0",
+    "q": "^1.5.1",
+    "socket.io": "^2.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reinaldorauch/queue-control.git"
+  },
+  "keywords": [
+    "queue",
+    "real",
+    "irl",
+    "control"
+  ],
+  "author": "Reinaldo A. C. Rauch <reinaldorauch@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reinaldorauch/queue-control/issues"
+  },
+  "homepage": "https://github.com/reinaldorauch/queue-control#readme"
+}

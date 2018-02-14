@@ -1,0 +1,14 @@
+{
+  apps: [
+    {
+      name: 'qc',
+      script: 'index.js',
+      env: {
+        MYSQL_SOCKET_PATH: '/var/run/mysql/mysql.sock',
+        MYSQL_USER: 'qc',
+        MYSQL_PASSWORD: 'qc_user',
+        MYSQL_DATABASE: 'queue_control'
+      }
+    }
+  ]
+}
