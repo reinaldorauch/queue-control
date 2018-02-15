@@ -1,13 +1,16 @@
 (function (document, io, undefined) {
   'use strict';
 
-  const senha = document.querySelector('#senha');
-  const bell = document.querySelector('#bell');
+  const $ = x => document.querySelector(x);
+  const senha = $('#senha');
+  const guiche = $('#guiche');
+  const bell = $('#bell');
   const socket = io({ transports: ['websocket'], upgrade: false });
 
-  socket.on('update-queue', queue => {
-    console.log('Received update queue', queue);
-    senha.innerText = queue;
+  socket.on('update-queue', ({ counter, mesa }) => {
+    console.log('Received update queue', counter, mesa);
+    senha.innerText = counter;
+    guiche.innerText = mesa;
     restart();
   });
 

@@ -1,6 +1,7 @@
 <html>
   <head>
     <title>MESA</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <style>
       * {
         font-family: sans-serif;
@@ -13,9 +14,15 @@
     <link rel="sourcemap" href="/socket.io-client/dist/socket.io.js.map">
   </head>
   <body>
-    <h1>Senha atual: <span id="senha"><%= counter %></span></h1>
-    <button type="button" id="call">Chamar próxima senha</button>
-    <button type="button" id="reset">Reiniciar contagem</button>
+    <h1>Senha atual: <span id="senha"><%= counter %></span>, guichê: <span id="mesa-origem"><%= mesa %></span></h1>
+    <p>
+      <label for="mesa">Guichê:</label>
+      <input type="text" name="mesa" id="mesa">
+    </p>
+    <p>
+      <button type="button" id="call">Chamar próxima senha</button>
+      <button type="button" id="reset">Reiniciar contagem</button>
+    </p>
 
     <script src="/socket.io-client/dist/socket.io.js"></script>
     <script src="./mesa.js"></script>
