@@ -18,7 +18,7 @@ USE `queue_control` ;
 -- Table `queue_control`.`log_fila`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `queue_control`.`log_fila` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `counter` BIGINT NOT NULL,
   `mesa` VARCHAR(15) NOT NULL,
   `timestamp` DATETIME NOT NULL,
