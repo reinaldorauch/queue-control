@@ -15,14 +15,16 @@
   </head>
   <body>
     <h1>Senha atual: <span id="senha"><%= counter %></span>, guichê: <span id="mesa-origem"><%= mesa %></span></h1>
-    <p>
-      <label for="mesa">Guichê:</label>
-      <input type="text" name="mesa" id="mesa">
-    </p>
-    <p>
-      <button type="button" id="call">Chamar próxima senha</button>
-      <button type="button" id="reset">Reiniciar contagem</button>
-    </p>
+    <form action="" id="call">
+      <p>
+        <label for="mesa">Guichê:</label>
+        <input type="text" name="mesa" id="mesa">
+      </p>
+      <p>
+        <button>Chamar próxima senha</button>
+        <button type="button" id="reset">Reiniciar contagem</button>
+      </p>
+    </form>
 
     <script src="/socket.io-client/dist/socket.io.js"></script>
     <script src="./mesa.js"></script>
