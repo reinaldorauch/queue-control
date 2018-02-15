@@ -8,13 +8,12 @@
   const socket = io({ transports: ['websocket'], upgrade: false });
 
   socket.on('update-queue', ({ counter, mesa }) => {
-    console.log('Received update queue', counter, mesa);
     senha.innerText = counter;
     guiche.innerText = mesa;
-    restart();
+    restartCallSound();
   });
 
-  function restart() {
+  function restartCallSound() {
     if (!bell.paused) {
       bell.pause();
     }

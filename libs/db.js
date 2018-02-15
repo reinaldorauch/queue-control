@@ -25,7 +25,7 @@ function getConnectionInfo() {
     connObject.socketPath = MYSQL_SOCKET_PATH;
   }
 
-  const connString = process.env.MYSQL_CONN_STRING || 'mysql://root:@localhost/transporte_coletivo_utilizacao';
+  const connString = process.env.MYSQL_CONN_STRING || 'mysql://root:@localhost/queue_control';
   return INSTANCE_CONNECTION_NAME || MYSQL_SOCKET_PATH ? connObject : connString;
 }
 
