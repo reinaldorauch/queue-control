@@ -22,31 +22,38 @@ app.use(express.static(`${__dirname}/node_modules/`));
 
 app.use(rootHandler);
 
-app.use((req, res, next, error) => {
+app.use((error, req, res, next) => {
   if (error) {
+    console.error(error.stack);
     res.status(500).json(error.stack);
   }
 });
 
 const queue = {
-  counter: 0
+  counter: 0,
+  mesa: '',
+  reset() {
+    this.counter = 0;
+    this.mesa = '';
+  }
 };
 
 io.set('transports', ['websocket']);
 
 io.on('connection', socket => {
-  socket.emit('update-queue', queue.counter);
+  socket.emit('update-queue', queue);
 
-  socket.on('request-update-queue', () => {
+  socket.on('request-update-queue', mesa => {
     queue.counter++;
+    queue.mesa = mesa;
 
-    io.emit('update-queue', queue.counter);
+    io.emit('update-queue', queue);
   });
 
   socket.on('reset',  () => {
-    queue.counter = 0;
+    queue.reset();
 
-    io.emit('update-queue', queue.counter);
+    io.emit('update-queue', queue);
   });
 });
 

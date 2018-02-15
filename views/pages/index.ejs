@@ -1,9 +1,12 @@
 <html>
   <head>
     <title>Senhas</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
     <style>
       * {
         font-family: sans-serif;
+        background-color: #000;
+        color: #fff;
       }
 
       .container {
@@ -11,7 +14,7 @@
         font-size: 78px;
       }
 
-      #senha {
+      .container > p {
         font-size: 146px;
         font-weight: bold;
       }
@@ -23,8 +26,8 @@
       <p>Este navegador não suporta a tag audio</p>
     </audio>
     <div class="container">
-      <p>Senha:</p>
-      <p id="senha"><%= counter %></p>
+      <p>Senha: <span id="senha"><%= counter %></span></p>
+      <p>Guichê: <span id="guiche"><%= mesa %></span></p>
     </div>
     <script src="/socket.io-client/dist/socket.io.js"></script>
     <script src="./counter.js"></script>
