@@ -16,7 +16,10 @@
     mesaOrigem.innerText = queue.mesa;
   });
 
-  call.addEventListener('click', () => socket.emit('request-update-queue', mesa()));
+  call.addEventListener('submit', e => {
+    e.preventDefault();
+    socket.emit('request-update-queue', mesa());
+  });
   reset.addEventListener('click', () => socket.emit('reset'));
 
 })(document, io);
