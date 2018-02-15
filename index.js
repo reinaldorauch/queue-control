@@ -37,16 +37,14 @@ const queue = {
   timestamp: new Date(),
 
   reset() {
-    this.counter = 0;
-    this.mesa = '';
-
+    this.set();
   },
 
   next(mesa) {
     this.set({ counter: this.counter + 1, mesa });
   },
 
-  set({ counter, mesa = '', timestamp = new Date() }) {
+  set({ counter = 0, mesa = '', timestamp = new Date() }) {
     this.counter = counter;
     this.mesa = mesa;
     this.timestamp = timestamp;
