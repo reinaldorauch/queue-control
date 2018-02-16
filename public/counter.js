@@ -5,12 +5,14 @@
   const senha = $('#senha');
   const guiche = $('#guiche');
   const bell = $('#bell');
+  const body = $('body');
   const socket = io({ transports: ['websocket'], upgrade: false });
 
   socket.on('update-queue', ({ counter, mesa }) => {
     senha.innerText = counter;
     guiche.innerText = mesa;
     restartCallSound();
+    blink(body);
   });
 
   function restartCallSound() {
@@ -23,5 +25,23 @@
     }
 
     bell.play();
+  }
+
+  function toggleClass(e, klass) {
+    if (e.className.indexOf(klass) != -1) {
+      e.className = e.className
+        .split(/\s+/)
+        .filter((c) => c !== klass)
+        .join(' ');
+    } else {
+      e.className += ` ${klass}`;
+    }
+  }
+
+  function blink(e) {
+    const interval = setInterval(() => {
+      toggleClass(e, 'invert');
+    }, 200);
+    setTimeout(() => clearInterval(interval), 2000);
   }
 })(document, io);
