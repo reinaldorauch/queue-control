@@ -1,12 +1,19 @@
 const queueDao = require(`${__dirname}/queue-dao`);
 const { Queue } = require(`${__dirname}/queue`);
 
+function updateHistory(pool, socket) {
+  queueDao.getLastFiveCalls(pool)
+    .then(calls => socket.emit('update-history', calls))
+    .catch(e => console.error(e.stack));
+}
+
 module.exports = (io, mysqlPool) => {
   const queue = new Queue();
 
   queue.on('update', () => {
     queueDao.persist(mysqlPool, queue)
-      .catch(e => console.error('Error on persisting queue to database:', e.stack));
+      .then(() => updateHistory(mysqlPool, io))
+      .catch(e => console.error('Error on persisting queue to database:', e.stack))
   });
 
   queue.loadIfExists();
@@ -15,6 +22,8 @@ module.exports = (io, mysqlPool) => {
 
   io.on('connection', socket => {
     socket.emit('update-queue', queue);
+
+    updateHistory(mysqlPool, socket);
 
     socket.on('request-update-queue', mesa => {
       queue.next(mesa);

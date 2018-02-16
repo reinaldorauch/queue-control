@@ -6,6 +6,7 @@
   const guiche = $('#guiche');
   const bell = $('#bell');
   const body = $('body');
+  const lastCalls = $('#tabela-historico > tbody');
   const socket = io({ transports: ['websocket'], upgrade: false });
 
   socket.on('update-queue', ({ counter, mesa }) => {
@@ -14,6 +15,17 @@
     restartCallSound();
     blink(body);
   });
+
+  socket.on('update-history', updateHistory);
+
+  function updateHistory(history) {
+    lastCalls.innerHTML = history.map(createHistoryLi).join('');
+  }
+
+  function createHistoryLi({ counter, mesa, timestamp }) {
+    timestamp = timestamp ? (new Date(timestamp)).toLocaleTimeString() : '';
+    return `<tr><td>${counter}</td><td>${mesa}</td><td>${timestamp}</td></tr>`;
+  }
 
   function restartCallSound() {
     if (!bell.paused) {
