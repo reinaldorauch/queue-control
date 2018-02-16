@@ -11,17 +11,50 @@
 
       .container {
         text-align: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: stretch;
+        align-content: stretch;
+      }
+
+      .large {
         font-size: 78px;
       }
+
+      .medium {
+        font-size: 39px;
+       }
 
       .container > p {
         font-size: 146px;
         font-weight: bold;
       }
 
+      .column {
+        width: 50%;
+      }
+
       .invert {
         color: #000 !important;
         background: #fff !important;
+      }
+
+      .bold {
+        font-weight: bold;
+      }
+
+      #tabela-historico {
+        border-collapse: collapse;
+        float: right;
+        margin-right: 80px;
+      }
+
+      #tabela-historico  td, #tabela-historico  th {
+        padding: 10px 20px;
+        text-align: right;
+        border-width: 1px;
+        border-color: #fff;
       }
     </style>
     <link rel="sourcemap" href="/socket.io-client/dist/socket.io.js.map">
@@ -31,8 +64,23 @@
       <p>Este navegador não suporta a tag audio</p>
     </audio>
     <div class="container">
-      <p>Senha: <span id="senha"><%= counter %></span></p>
-      <p>Guichê: <span id="guiche"><%= mesa %></span></p>
+      <div class="column large bold">
+        <p>Senha: <span id="senha"><%= counter %></span></p>
+        <p>Guichê: <span id="guiche"><%= mesa %></span></p>
+      </div>
+      <div class="column medium">
+        <p>Últimas senhas chamadas:</p>
+        <table class="medium" id="tabela-historico">
+          <thead>
+            <tr>
+              <th>SENHA</th>
+              <th>MESA</th>
+              <th>HORA</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </div>
     <script src="/socket.io-client/dist/socket.io.js"></script>
     <script src="./counter.js"></script>
