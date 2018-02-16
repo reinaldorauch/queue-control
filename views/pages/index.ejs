@@ -44,10 +44,13 @@
         font-weight: bold;
       }
 
+      .center {
+        text-align: center;
+      }
+
       #tabela-historico {
         border-collapse: collapse;
-        float: right;
-        margin-right: 80px;
+        margin: 0 auto;
       }
 
       #tabela-historico  td, #tabela-historico  th {
@@ -68,7 +71,7 @@
         <p>Senha: <span id="senha"><%= counter %></span></p>
         <p>Guichê: <span id="guiche"><%= mesa %></span></p>
       </div>
-      <div class="column medium">
+      <div class="column medium center">
         <p>Últimas senhas chamadas:</p>
         <table class="medium" id="tabela-historico">
           <thead>
