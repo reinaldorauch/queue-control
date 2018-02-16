@@ -8,6 +8,7 @@
   const mesaOrigem = $('#mesa-origem');
   const call = $('#call');
   const reset = $('#reset');
+  const recall = $('#recall');
   const mesa =  $('#mesa');
   const mesaVal = () => mesa.value;
 
@@ -25,6 +26,7 @@
     socket.emit('request-update-queue', guiche);
   });
   reset.addEventListener('click', () => socket.emit('reset'));
+  recall.addEventListener('click', () => socket.emit('recall'));
 
   document.addEventListener('readystatechange', () => {
     mesa.value = localStorage.getItem(LOCALSTORAGE_ULTIMA_MESA);

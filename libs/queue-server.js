@@ -2,7 +2,7 @@ const queueDao = require(`${__dirname}/queue-dao`);
 const { Queue } = require(`${__dirname}/queue`);
 
 function updateHistory(pool, socket) {
-  queueDao.getLastFiveCalls(pool)
+  return queueDao.getLastFiveCalls(pool)
     .then(calls => socket.emit('update-history', calls))
     .catch(e => console.error(e.stack));
 }
@@ -36,5 +36,7 @@ module.exports = (io, mysqlPool) => {
 
       io.emit('update-queue', queue);
     });
+
+    socket.on('recall', () => io.emit('update-queue', queue));
   });
 };
